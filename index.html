@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>777CECOM - Premium Casino Experience</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #ffcc00;
+            --secondary: #ff3366;
+            --dark: #1a1a2e;
+            --darker: #0f0f1a;
+            --light: #ffffff;
+            --gray: #8a8a9c;
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--light);
+            min-height: 100vh;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 0;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+            position: relative;
+        }
+        
+        .logo {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        /* Desktop Navigation */
+        .desktop-nav ul {
+            display: flex;
+            list-style: none;
+        }
+        
+        .desktop-nav ul li {
+            margin-left: 25px;
+        }
+        
+        .desktop-nav ul li a {
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: color 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .desktop-nav ul li a i {
+            margin-right: 8px;
+        }
+        
+        .desktop-nav ul li a:hover {
+            color: var(--primary);
+        }
+        
+        /* Mobile Navigation */
+        .mobile-nav-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--light);
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 5px;
+        }
+        
+        .mobile-nav {
+            display: none;
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: var(--dark);
+            border-radius: 0 0 10px 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            z-index: 1000;
+            overflow: hidden;
+        }
+        
+        .mobile-nav.active {
+            display: block;
+        }
+        
+        .mobile-nav ul {
+            list-style: none;
+            padding: 10px 0;
+        }
+        
+        .mobile-nav ul li {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .mobile-nav ul li:last-child {
+            border-bottom: none;
+        }
+        
+        .mobile-nav ul li a {
+            display: flex;
+            align-items: center;
+            padding: 15px 20px;
+            color: var(--light);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+        }
+        
+        .mobile-nav ul li a i {
+            margin-right: 10px;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .mobile-nav ul li a:hover {
+            background: rgba(255, 204, 0, 0.1);
+            color: var(--primary);
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 12px 25px;
+            background: var(--primary);
+            color: var(--dark);
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+            color: var(--light);
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
+        }
+        
+        .hero {
+            text-align: center;
+            padding: 80px 0;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            background: linear-gradient(to right, var(--primary), var(--secondary));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--gray);
+        }
+        
+        .highlight {
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .section {
+            margin: 60px 0;
+        }
+        
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 30px;
+            color: var(--primary);
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--secondary);
+        }
+        
+        .bonus-container {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 30px 0;
+            text-align: center;
+            border: 1px solid rgba(255, 204, 0, 0.2);
+        }
+        
+        .bonus-items {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin: 30px 0;
+        }
+        
+        .bonus-item {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--darker);
+            padding: 15px 25px;
+            border-radius: 10px;
+            font-weight: 700;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+        
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .game-card {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 10px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.3s, background 0.3s;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        .game-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.1);
+            border-color: var(--primary);
+        }
+        
+        .game-card i {
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .game-card h3 {
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .game-card p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .telegram-promo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            background: rgba(0, 136, 204, 0.1);
+            border-radius: 15px;
+            padding: 30px;
+            margin: 40px 0;
+            border: 1px solid rgba(0, 136, 204, 0.3);
+        }
+        
+        .telegram-promo i {
+            font-size: 3rem;
+            color: #0088cc;
+        }
+        
+        .telegram-promo div {
+            text-align: left;
+        }
+        
+        .telegram-promo h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .footer {
+            text-align: center;
+            padding: 40px 0;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 40px;
+            color: var(--gray);
+        }
+        
+        .support {
+            margin: 30px 0;
+            text-align: center;
+        }
+        
+        /* Media Queries for Responsive Design */
+        @media (max-width: 768px) {
+            .desktop-nav {
+                display: none;
+            }
+            
+            .mobile-nav-toggle {
+                display: block;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .telegram-promo {
+                flex-direction: column;
+                text-align: center;
+            }
+            
+            .telegram-promo div {
+                text-align: center;
+            }
+        }
+        
+        @media (min-width: 769px) {
+            .mobile-nav {
+                display: none !important;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <div class="logo">777<span>COM</span></div>
+            
+            <!-- Desktop Navigation -->
+            <nav class="desktop-nav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="Event-Promotion.html"><i class="fas fa-gift"></i> Offers</a></li>
+                    <li><a href="login-sign-up.html"><i class="fas fa-user"></i> Login</a></li>
+                    <li><a href="login-sign-up.html"><i class="fas fa-user-plus"></i> Register</a></li>
+                    <li><a href="Profile.html"><i class="fas fa-id-card"></i> Profile</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Mobile Navigation Toggle -->
+            <button class="mobile-nav-toggle" id="mobileNavToggle">
+                <i class="fas fa-bars"></i>
+            </button>
+            
+            <!-- Mobile Navigation Menu -->
+            <nav class="mobile-nav" id="mobileNav">
+                <ul>
+                    <li><a href="index.html"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="Event-Promotion.html"><i class="fas fa-gift"></i> Offers</a></li>
+                    <li><a href="login-sign-up.html"><i class="fas fa-user"></i> Login</a></li>
+                    <li><a href="login-sign-up.html"><i class="fas fa-user-plus"></i> Register</a></li>
+                    <li><a href="Profile.html"><i class="fas fa-id-card"></i> Profile</a></li>
+                </ul>
+            </nav>
+        </header>
+        
+        
+        <section class="section">
+            <h2 class="section-title">SURPRISE BONUS</h2>
+            <div class="bonus-container">
+                <p>Claim your exclusive welcome bonus and start playing today!</p>
+                <div class="bonus-items">
+                    <div class="bonus-item">77$</div>
+                    <div class="bonus-item">987$</div>
+                    <div class="bonus-item">432$</div>
+                    <div class="bonus-item">7654$</div>
+                </div>
+                <p>Have any questions? Please consult our 24/7 Online Service.</p>
+            </div>
+        </section>
+         
+        <section class="section">
+            <h2 class="section-title">Popular Games</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <i class="fas fa-dice"></i>
+                    <h3>Crazy777</h3>
+                    <p>Classic slots with a modern twist</p>
+                </div>
+                <div class="game-card">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Money Coming</h3>
+                    <p>Watch your winnings multiply</p>
+                </div>
+                <div class="game-card">
+                    <i class="fas fa-money-bill-trend-up"></i>
+                    <h3>Money Coming</h3>
+                    <p>Another exciting way to win big</p>
+                </div>
+                <div class="game-card">
+                    <i class="fas fa-plane"></i>
+                    <h3>Aviator</h3>
+                    <p>Fly high and cash out at the right moment</p>
+                </div>
+            </div>
+        </section>
+        <section class="section">
+            <h2 class="section-title">Hot Games</h2>
+            <div class="games-grid">
+                <div class="game-card">
+                    <i class="fas fa-dice"></i>
+                    <h3>Slot</h3>
+                    <p>Spin the reels and win big with our exciting slot games</p>
+                </div>
+                <div class="game-card">
+                    <i class="fas fa-club"></i>
+                    <h3>Cards</h3>
+                    <p>Classic card games with modern twists</p>
+                </div>
+                <div class="game-card">
+                    <i class="fas fa-link"></i>
+                    <h3>Blockchain</h3>
+                    <p>Provably fair games powered by blockchain technology</p>
+                </div>
+                <div class="game-card">
+                    <i class="fas fa-fish"></i>
+                    <h3>Fishing</h3>
+                    <p>Catch the biggest fish for massive rewards</p>
+                </div>
+                <div class="game-card">
+                    <i class="fas fa-video"></i>
+                    <h3>Live Casino</h3>
+                    <p>Play with real dealers in real time</p>
+                </div>
+            </div>
+        </section>
+       
+        
+        <div class="support">
+            <p>24/7 Customer Support Available</p>
+            <a href="#" class="btn">Contact Support</a>
+        </div>
+        
+        <footer class="footer">
+            <p>&copy; 2025 777CECOM. All rights reserved.</p>
+            <p>Play responsibly. Must be 18+ to participate.</p>
+        </footer>
+    </div>
+
+    <script>
+        // Mobile navigation toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileNavToggle = document.getElementById('mobileNavToggle');
+            const mobileNav = document.getElementById('mobileNav');
+            
+            mobileNavToggle.addEventListener('click', function() {
+                mobileNav.classList.toggle('active');
+                
+                // Change icon based on menu state
+                const icon = this.querySelector('i');
+                if (mobileNav.classList.contains('active')) {
+                    icon.classList.remove('fa-bars');
+                    icon.classList.add('fa-times');
+                } else {
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event) {
+                if (!event.target.closest('header') && mobileNav.classList.contains('active')) {
+                    mobileNav.classList.remove('active');
+                    const icon = mobileNavToggle.querySelector('i');
+                    icon.classList.remove('fa-times');
+                    icon.classList.add('fa-bars');
+                }
+            });
+            
+            // Simple animation for bonus items
+            const bonusItems = document.querySelectorAll('.bonus-item');
+            
+            bonusItems.forEach((item, index) => {
+                // Add staggered animation
+                item.style.animation = `pulse 2s ${index * 0.3}s infinite alternate`;
+            });
+            
+            // Add CSS for pulse animation
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes pulse {
+                    0% { transform: scale(1); box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3); }
+                    100% { transform: scale(1.1); box-shadow: 0 10px 25px rgba(255, 204, 0, 0.5); }
+                }
+            `;
+            document.head.appendChild(style);
+        });
+    </script>
+</body>
+</html>

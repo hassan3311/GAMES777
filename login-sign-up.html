@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>777CE.COM - Login & Register</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        :root {
+            --primary: #ffcc00;
+            --secondary: #ff3366;
+            --dark: #1a1a2e;
+            --darker: #0f0f1a;
+            --light: #ffffff;
+            --gray: #8a8a9c;
+            --card-bg: rgba(30, 30, 50, 0.8);
+        }
+        
+        body {
+            background: linear-gradient(135deg, var(--darker), var(--dark));
+            color: var(--light);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 450px;
+        }
+        
+        .logo {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        
+        .logo h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            color: var(--primary);
+            text-shadow: 0 0 10px rgba(255, 204, 0, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        .logo span {
+            color: var(--secondary);
+        }
+        
+        .card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-bottom: 20px;
+        }
+        
+        .card-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        .card-header h2 {
+            font-size: 1.8rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .card-header p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .form-group {
+            margin-bottom: 20px;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            color: var(--light);
+            font-size: 1rem;
+            transition: all 0.3s;
+        }
+        
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(255, 204, 0, 0.2);
+        }
+        
+        .login-methods {
+            display: flex;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .method-btn {
+            flex: 1;
+            padding: 12px;
+            background: transparent;
+            border: none;
+            color: var(--gray);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .method-btn.active {
+            background: var(--primary);
+            color: var(--dark);
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .checkbox-group input {
+            margin-right: 10px;
+        }
+        
+        .checkbox-group label {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin: 0;
+        }
+        
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: var(--dark);
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-align: center;
+            text-decoration: none;
+        }
+        
+        .btn:hover {
+            background: var(--secondary);
+            color: var(--light);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(255, 51, 102, 0.4);
+        }
+        
+        .divider {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        .back {
+            text-align: center;
+            margin: 25px 0;
+            position: relative;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        .divider::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: rgba(255, 255, 255, 0.1);
+            z-index: 1;
+        }
+        
+        .divider span {
+            background: var(--card-bg);
+            padding: 0 15px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+        
+        .footer-links a {
+            color: var(--gray);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--primary);
+        }
+        
+        .quick-login {
+            text-align: center;
+            margin-top: 15px;
+        }
+        
+        .quick-login a {
+            color: var(--primary);
+            text-decoration: none;
+            font-weight: 600;
+        }
+        
+        .tabs {
+            display: flex;
+            margin-bottom: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .tab {
+            flex: 1;
+            padding: 15px;
+            text-align: center;
+            background: transparent;
+            border: none;
+            color: var(--gray);
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
+            background: var(--primary);
+            color: var(--dark);
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+            }
+            
+            .card {
+                padding: 20px;
+            }
+            
+            .logo h1 {
+                font-size: 2.5rem;
+            }
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <h1>777<span>CE.COM</span></h1>
+        </div>
+        <div class="Back">
+            <a href="index.html">Back</a>
+        </div>
+        <div class="tabs">
+            <button class="tab active" data-tab="register">Register</button>
+            <button class="tab" data-tab="login">Login</button>
+        </div>
+        
+        <!-- Registration Form -->
+        <div class="tab-content active" id="register">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Register</h2>
+                    <p>Support Phone number/Username Login</p>
+                </div>
+                
+                <form id="registerForm">
+                    <div class="form-group">
+                        <label for="phoneUsername">Please enter Phone number/Username</label>
+                        <input type="text" id="phoneUsername" class="form-control" placeholder="Phone number or Username">
+                    </div>
+                    
+                    <div class="login-methods">
+                        <button type="button" class="method-btn">Password Login</button>
+                        <button type="button" class="method-btn active">Code login</button>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="password">Enter password</label>
+                        <input type="password" id="password" class="form-control" placeholder="Enter your password">
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="remember">
+                        <label for="remember">Remember account password</label>
+                    </div>
+                    
+                    <button type="submit" class="btn">Register Now</button>
+                </form>
+            </div>
+        </div>
+        
+        <!-- Login Form -->
+        <div class="tab-content" id="login">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Login</h2>
+                </div>
+                
+                <form id="loginForm">
+                    <div class="form-group">
+                        <label for="loginPhone">Phone number/Username</label>
+                        <input type="text" id="loginPhone" class="form-control" placeholder="Phone number or Username">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="loginPassword">Password</label>
+                        <input type="password" id="loginPassword" class="form-control" placeholder="Enter your password">
+                    </div>
+                    
+                    <div class="checkbox-group">
+                        <input type="checkbox" id="loginRemember">
+                        <label for="loginRemember">Remember me</label>
+                    </div>
+                    
+                    <button type="submit" class="btn">Login</button>
+                    
+                    <div class="divider">
+                        <span>OR</span>
+                    </div>
+                    
+                    <div class="footer-links">
+                        <a href="#">Customer Service</a>
+                        <a href="#">Demo</a>
+                        <a href="#">Forget Password</a>
+                    </div>
+                    
+                    <div class="quick-login">
+                        <a href="#">Quick login</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Tab functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    const target = tab.getAttribute('data-tab');
+                    
+                    // Update active tab
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tab.classList.add('active');
+                    
+                    // Show active tab content
+                    tabContents.forEach(content => {
+                        content.classList.remove('active');
+                        if (content.id === target) {
+                            content.classList.add('active');
+                        }
+                    });
+                });
+            });
+            
+            // Login method buttons
+            const methodBtns = document.querySelectorAll('.method-btn');
+            methodBtns.forEach(btn => {
+                btn.addEventListener('click', () => {
+                    methodBtns.forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                });
+            });
+            
+            // Form submission
+            const registerForm = document.getElementById('registerForm');
+            const loginForm = document.getElementById('loginForm');
+            
+            registerForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Registration submitted! In a real app, this would process your registration.');
+            });
+            
+            loginForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                alert('Login submitted! In a real app, this would authenticate your credentials.');
+            });
+        });
+    </script>
+</body>
+</html>
